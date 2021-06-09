@@ -1,20 +1,15 @@
 #! /bin/bash
 
-####################### TO run this script, pass fepath as first arguement and publicpath as second arguement.
+####################### TO run this script, pass fepath as first arguement and publicpath as second arguement and env as third.
 ## eg: ./build-docker.sh . ./public
 
 echo ">>>>>>>> deploying fe <<<<<<<<<<<"
 echo
 
-# FEPATH="."
-# PUBLICPATH="./public"
-FEPATH=$1
+FEPATH=$1 #deprecated but still need to pass.
 PUBLICPATH=$2
+ENV=$3
 
-# echo "changing directory to ${FEPATH}"
-# echo
-
-# command cd ${FEPATH}
 
 echo ">>>>>>>>>>>>>>> removing existing public directory <<<<<<<<<<<<<"
 
@@ -30,24 +25,19 @@ echo
 # npm install 
 
 
-npm run build-dev
-
-
-# command cd ".."
-command cd ${PUBLICPATH}
+npm run build-${ENV}
 
 command pwd
 
 echo ">>>>>>>>>>>>>>> cleaning ${pwd}<<<<<<<<<<<<<<"
 echo
 
-cd ..
 
 pwd
 
 echo ">>>>>>>>>>>>>copying files from dist to public <<<<<<<<<<<<<"
 echo
 
-cp ./dist/*.html ./public/
+cp ./dist/*.html ${PUBLICPATH}/
 mkdir ${PUBLICPATH}/assets
 cp ./dist/*js ${PUBLICPATH}/assets

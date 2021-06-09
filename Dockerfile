@@ -8,7 +8,7 @@ COPY . .
 
 RUN npm install
 
-RUN ["sh", "./build-docker.sh", ".", "./public"]
+RUN ["sh", "./build-docker.sh", ".", "./public", "dev"]
 
 FROM nginx:1.19.6-alpine
 
