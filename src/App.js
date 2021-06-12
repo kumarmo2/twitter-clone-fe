@@ -1,7 +1,12 @@
 import React from "react";
+import Flatten from "./Flatten";
 
 const App = () => {
-  return <div>kumarmo3</div>;
+  return (
+    <>
+      <Flatten />
+    </>
+  );
 };
 
 export default App;
